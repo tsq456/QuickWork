@@ -1,0 +1,82 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "quickwork",
+  "title": "QuickWork",
+  "description": "Send tagged text messages to Feishu via user identity with auto token refresh.",
+  "icon": "icon.png",
+  "author": "thomas",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "send-feishu-message",
+      "title": "Qw",
+      "description": "Send a tagged text message to Feishu group by user identity with auto refresh",
+      "mode": "no-view",
+      "arguments": [
+        {
+          "name": "body",
+          "type": "text",
+          "placeholder": "输入正文，后缀可写 #前缀（例：今天总结 #日报）",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "authorize-feishu",
+      "title": "Authorize Feishu",
+      "description": "Open OAuth page, auto capture code, and save refreshed tokens",
+      "mode": "no-view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "feishuAppId",
+      "type": "textfield",
+      "title": "Feishu App ID",
+      "description": "App ID used to refresh user token (e.g. cli_xxx)",
+      "required": true
+    },
+    {
+      "name": "feishuAppSecret",
+      "type": "password",
+      "title": "Feishu App Secret",
+      "description": "App Secret used to refresh user token",
+      "required": true
+    },
+    {
+      "name": "feishuUserRefreshToken",
+      "type": "password",
+      "title": "Feishu User Refresh Token",
+      "description": "User refresh token used to obtain access token automatically",
+      "required": true
+    },
+    {
+      "name": "feishuOAuthRedirectUri",
+      "type": "textfield",
+      "title": "Feishu OAuth Redirect URI",
+      "description": "Must be configured in your app, e.g. http://127.0.0.1:14520/feishu-callback",
+      "required": true
+    },
+    {
+      "name": "feishuChatId",
+      "type": "textfield",
+      "title": "Feishu Chat ID",
+      "description": "Target group chat ID (e.g. oc_xxx)",
+      "required": true
+    }
+  ],
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "lint": "ray lint",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@raycast/api": "^1.99.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.13",
+    "typescript": "^5.8.3",
+    "vitest": "^2.1.8"
+  }
+}
