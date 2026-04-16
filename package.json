@@ -17,7 +17,7 @@
           "name": "body",
           "type": "text",
           "placeholder": "输入正文，后缀可写 #前缀（例：今天总结 #日报）",
-          "required": false
+          "required": true
         }
       ]
     },
